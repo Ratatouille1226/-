@@ -30,10 +30,8 @@ export class CustomMessage extends Module {
 
     trigger() {
         this.div.style.display = 'block';
-        this.button.style.display = 'none';
         setTimeout(() => {
             this.div.style.display = 'none';
-            this.button.style.display = 'block';
         }, 13000);
     };
 }
