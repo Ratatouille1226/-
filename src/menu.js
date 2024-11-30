@@ -57,5 +57,6 @@ export class ContextMenu extends Menu {
                 showBackgroundModule.trigger();
             }
         }
+        this.close();
     }
 }

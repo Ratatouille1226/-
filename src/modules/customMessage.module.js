@@ -2,7 +2,7 @@ import { Module } from "../core/module";
 
 export class CustomMessage extends Module {
     constructor(props) {
-        super(1, 'Кастомное сообщение'); 
+        super(1, 'Кастомное сообщение');
 
         this.div = document.createElement('div');
         this.div.className = 'customMessage';
