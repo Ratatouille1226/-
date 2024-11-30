@@ -2,7 +2,7 @@ import { Module } from "../core/module";
 
 export class CustomMessage extends Module {
   constructor(props) {
-    super(1, "Кастомное сообщение"); //Не знаю что тут нужно, без этого не работает
+    super(1, "Кастомное сообщение");
 
     this.div = document.createElement("div");
     this.div.className = "customMessage";
@@ -24,7 +24,6 @@ export class CustomMessage extends Module {
     this.div.append(this.span);
     this.div.append(this.img);
     document.body.append(this.div);
-    document.body.append(this.button);
   }
 
   trigger() {
