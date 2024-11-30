@@ -1,6 +1,7 @@
 import { Menu } from './core/menu'
 import { CustomMessage } from './modules/customMessage.module';
 import { BackgroundModule } from './modules/background.module';
+import { ShapeModule } from './modules/shape.module';
 import { BitcoinModule } from './modules/bitcoin.module';
 
 export class ContextMenu extends Menu {
@@ -26,10 +27,12 @@ export class ContextMenu extends Menu {
         const customMessage = new CustomMessage().toHTML();
         const backgroundModule = new BackgroundModule().toHTML();
         const bitcoinModule = new BitcoinModule().toHTML();
+        const shapeModule = new ShapeModule().toHTML();
 
         this.menu.innerHTML = `
             ${customMessage} 
             ${backgroundModule}
+            ${shapeModule}
             ${bitcoinModule}
         `
     }
@@ -52,17 +55,20 @@ export class ContextMenu extends Menu {
 
     handleItemClick(e) {
         if (e.target.classList.value === 'menu-item') {
-            if (e.target.getAttribute('data-type') == 1) {
+            if (e.target.getAttribute('data-type') === '1') {
                 const showCustomMessage = new CustomMessage();
                 showCustomMessage.trigger();
-            } else if (e.target.getAttribute('data-type') == 2) {
+            } else if (e.target.getAttribute('data-type') === '2') {
                 const showBackgroundModule = new BackgroundModule();
                 showBackgroundModule.trigger();
-            } else if (e.target.getAttribute('data-type') == 3) {
+            } else if (e.target.getAttribute('data-type') === '3') {
+                const showShape = new ShapeModule();
+                showShape.trigger();
+            } else if (e.target.getAttribute('data-type') === '4') {
                 const showBitcoinModule = new BitcoinModule();
                 showBitcoinModule.trigger();
             }
+            this.close();
         }
-        this.close();
     }
 }
