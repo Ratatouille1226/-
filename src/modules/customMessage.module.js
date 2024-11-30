@@ -32,6 +32,6 @@ export class CustomMessage extends Module {
         this.div.style.display = 'block';
         setTimeout(() => {
             this.div.style.display = 'none';
-        }, 13000);
+        }, 2000);
     };
 }
