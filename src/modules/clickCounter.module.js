@@ -1,12 +1,19 @@
 import "../styles.css";
 import { Module } from "../core/module";
 
-export class CustomMessage extends Module {
+import "../styles.css";
+import { Module } from "../core/module";
+
+export class clickCounter extends Module {
   constructor(props) {
-    super(1, "fg"); //Не знаю что тут нужно, без этого не работает
+    super("", "Считать клики (за 3 секунды)"); //Не знаю что тут нужно, без этого не работает
+
+    this.state = {
+      counter: 0,
+    };
 
     this.div = document.createElement("div");
-    this.div.className = "customMessage";
+    this.div.className = "clickCounter";
 
     this.span = document.createElement("span");
     this.span.textContent =
@@ -32,6 +39,6 @@ export class CustomMessage extends Module {
     this.div.style.display = "block";
     setTimeout(() => {
       this.div.style.display = "none";
-    }, 5000);
+    }, 13000);
   }
 }
