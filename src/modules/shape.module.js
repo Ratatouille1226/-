@@ -3,7 +3,7 @@ import { random } from '../utils'
 
 export class ShapeModule extends Module {
     constructor(props) {
-        super(3, 'Создать фигуру');
+        super(4, 'Создать фигуру');
     }
     
     trigger() {

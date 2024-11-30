@@ -1,13 +1,24 @@
-import { Menu } from './core/menu'
+import { Menu } from './core/menu';
 import { CustomMessage } from './modules/customMessage.module';
 import { BackgroundModule } from './modules/background.module';
 import { ShapeModule } from './modules/shape.module';
 import { BitcoinModule } from './modules/bitcoin.module';
+import { ClickCounter } from './modules/clickCounter.module';
+import { JingleBells } from './modules/jingleBells.module';
 
 export class ContextMenu extends Menu {
     constructor(selector) {
         super(selector);
         this.menu = this.el;
+        this.modules = [
+            { type: 1, class: JingleBells, label: 'С наступающим новым годом!'},
+            { type: 2, class: CustomMessage, label: 'Сообщение' },
+            { type: 3, class: BackgroundModule, label: 'Изменить цвет фона' },
+            { type: 4, class: ShapeModule, label: 'Форма' },
+            { type: 5, class: BitcoinModule, label: 'Биткоин'},
+            { type: 6, class: ClickCounter, label: 'Счётчик кликов'},
+        ];
+
         this.handleContextMenu = this.handleContextMenu.bind(this);
         this.handleDocumentClick = this.handleDocumentClick.bind(this);
         this.handleItemClick = this.handleItemClick.bind(this);
@@ -24,17 +35,10 @@ export class ContextMenu extends Menu {
     }
 
     add() {
-        const customMessage = new CustomMessage().toHTML();
-        const backgroundModule = new BackgroundModule().toHTML();
-        const bitcoinModule = new BitcoinModule().toHTML();
-        const shapeModule = new ShapeModule().toHTML();
-
-        this.menu.innerHTML = `
-            ${customMessage} 
-            ${backgroundModule}
-            ${shapeModule}
-            ${bitcoinModule}
-        `
+        this.menu.innerHTML = this.modules.map(module => {
+            const moduleInstance = new module.class();
+            return moduleInstance.toHTML();
+        }).join('');
     }
 
     handleContextMenu(e) {
@@ -54,20 +58,14 @@ export class ContextMenu extends Menu {
     }
 
     handleItemClick(e) {
-        if (e.target.classList.value === 'menu-item') {
-            if (e.target.getAttribute('data-type') === '1') {
-                const showCustomMessage = new CustomMessage();
-                showCustomMessage.trigger();
-            } else if (e.target.getAttribute('data-type') === '2') {
-                const showBackgroundModule = new BackgroundModule();
-                showBackgroundModule.trigger();
-            } else if (e.target.getAttribute('data-type') === '3') {
-                const showShape = new ShapeModule();
-                showShape.trigger();
-            } else if (e.target.getAttribute('data-type') === '4') {
-                const showBitcoinModule = new BitcoinModule();
-                showBitcoinModule.trigger();
-            } 
+        const clickedItem = e.target.closest('.menu-item');
+        if (clickedItem) {
+            const type = parseInt(clickedItem.getAttribute('data-type'), 10);
+            const module = this.modules.find(mod => mod.type === type);
+            if (module) {
+                const moduleInstance = new module.class();
+                moduleInstance.trigger();
+            }
             this.close();
         }
     }

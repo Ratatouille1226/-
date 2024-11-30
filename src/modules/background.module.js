@@ -2,7 +2,7 @@ import {Module} from '../core/module'
 
 export class BackgroundModule extends Module {
     constructor(props) {
-        super(2, 'Изменить цвет фона');
+        super(3, 'Изменить цвет фона');
     }
 
     trigger() {
