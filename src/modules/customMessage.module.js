@@ -10,7 +10,7 @@ export class CustomMessage extends Module {
     this.span = document.createElement("span");
     this.span.textContent =
       "Живи, кайфуй, гуляй, играй, упал, вставай, наглей, ругай, чужих роняй, своих спасай, пельмени, суп, картошка, чай.";
-    this.span.style.color = "white";
+    this.span.style.color = "black";
     this.span.style.marginLeft = "5px";
 
     this.h2 = document.createElement("h2");
