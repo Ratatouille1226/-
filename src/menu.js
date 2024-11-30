@@ -49,9 +49,6 @@ export class ContextMenu extends Menu {
 
     handleItemClick(e) {
         if (e.target.classList.value === 'menu-item') {
-            const showCustomMessage = new CustomMessage();
-            showCustomMessage.trigger();
-            // console.log(e.target.getAttribute('data-type'))
             if (e.target.getAttribute('data-type') == 1) {
                 const showCustomMessage = new CustomMessage();
                 showCustomMessage.trigger();
