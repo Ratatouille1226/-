@@ -1,6 +1,7 @@
 import { Menu } from './core/menu'
 import { CustomMessage } from './modules/customMessage.module';
 import { BackgroundModule } from './modules/background.module';
+import { BitcoinModule } from './modules/bitcoin.module';
 
 export class ContextMenu extends Menu {
     constructor(selector) {
@@ -24,10 +25,12 @@ export class ContextMenu extends Menu {
     add() {
         const customMessage = new CustomMessage().toHTML();
         const backgroundModule = new BackgroundModule().toHTML();
+        const bitcoinModule = new BitcoinModule().toHTML();
 
         this.menu.innerHTML = `
             ${customMessage} 
             ${backgroundModule}
+            ${bitcoinModule}
         `
     }
 
@@ -55,6 +58,9 @@ export class ContextMenu extends Menu {
             } else if (e.target.getAttribute('data-type') == 2) {
                 const showBackgroundModule = new BackgroundModule();
                 showBackgroundModule.trigger();
+            } else if (e.target.getAttribute('data-type') == 3) {
+                const showBitcoinModule = new BitcoinModule();
+                showBitcoinModule.trigger();
             }
         }
         this.close();

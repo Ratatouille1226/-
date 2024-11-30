@@ -56,3 +56,46 @@ body {
     height: 200px;
     margin-left: -1.5px;
 }
+
+.jason-background {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 37vw;
+    height: fit-content;
+    transform: translateX(-50%);
+    background-image: url('./assets/jason-no-back.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    aspect-ratio: 1/1;
+}
+
+
+/*стили для модуля биткоин*/
+.comment-box {
+    position: absolute;
+    top: 30vw;
+    left: 15vw;
+    padding: 20px 30px;
+    border: 2px solid red;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    font-family: sans-serif;
+}
+
+.comment-box::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: -11px;
+    transform: rotate(-45deg);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid red;
+}
