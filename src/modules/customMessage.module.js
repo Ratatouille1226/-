@@ -1,9 +1,8 @@
-import '../styles.css';
 import { Module } from "../core/module";
 
 export class CustomMessage extends Module {
     constructor(props) {
-        super(1, 'fg'); //Не знаю что тут нужно, без этого не работает
+        super(1, 'Кастомное сообщение'); //Не знаю что тут нужно, без этого не работает
 
         this.div = document.createElement('div');
         this.div.className = 'customMessage';
