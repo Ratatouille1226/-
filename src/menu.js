@@ -67,7 +67,7 @@ export class ContextMenu extends Menu {
             } else if (e.target.getAttribute('data-type') === '4') {
                 const showBitcoinModule = new BitcoinModule();
                 showBitcoinModule.trigger();
-            }
+            } 
             this.close();
         }
     }
