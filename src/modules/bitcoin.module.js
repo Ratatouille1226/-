@@ -2,7 +2,7 @@ import {Module} from '../core/module'
 
 export class BitcoinModule extends Module {
     constructor() {
-        super(3, 'Узнать цену Bitcoin');
+        super(4, 'Узнать цену Bitcoin');
     }
 
     trigger() {
