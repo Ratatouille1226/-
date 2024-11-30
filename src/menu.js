@@ -1,6 +1,6 @@
-import {Menu} from './core/menu'
-
-import {CustomMessage} from './modules/customMessage.module';
+import { Menu } from './core/menu'
+import { CustomMessage } from './modules/customMessage.module';
+import { BackgroundModule } from './modules/background.module';
 
 export class ContextMenu extends Menu {
     constructor(selector) {
@@ -8,26 +8,12 @@ export class ContextMenu extends Menu {
         this.menu = this.el;
         this.handleContextMenu = this.handleContextMenu.bind(this);
         this.handleDocumentClick = this.handleDocumentClick.bind(this);
-
-        this.li = document.createElement('li');
-        this.li.textContent = 'Кастомное сообщение';
-        this.li.className = 'menu-item';
-
-        this.menu.append(this.li);
-
-        const custom = new CustomMessage();
-
-        this.li.addEventListener('click', () => {
-            custom.trigger();
-        })
     }
-
-    
 
     open() {
         document.addEventListener('contextmenu', this.handleContextMenu);
         document.addEventListener('click', this.handleDocumentClick);
-        console.log(this.menu)
+        document.addEventListener('click', this.handleItemClick);
     }
 
     close() {
@@ -35,7 +21,13 @@ export class ContextMenu extends Menu {
     }
 
     add() {
-        console.log('Добавить функционал в ContextMenu');
+        const customMessage = new CustomMessage().toHTML();
+        const backgroundModule = new BackgroundModule().toHTML();
+
+        this.menu.innerHTML = `
+            ${customMessage} 
+            ${backgroundModule}
+        `
     }
 
     handleContextMenu(e) {
@@ -51,6 +43,21 @@ export class ContextMenu extends Menu {
     handleDocumentClick(e) {
         if (!this.menu.contains(e.target)) {
             this.close();
+        }
+    }
+
+    handleItemClick(e) {
+        if (e.target.classList.value === 'menu-item') {
+            const showCustomMessage = new CustomMessage();
+            showCustomMessage.trigger();
+            console.log(e.target.getAttribute('data-type'))
+            if (e.target.getAttribute('data-type') == 1) {
+                const showCustomMessage = new CustomMessage();
+                showCustomMessage.trigger();
+            } else if (e.target.getAttribute('data-type') == 2) {
+                const showBackgroundModule = new BackgroundModule();
+                showBackgroundModule.trigger();
+            }
         }
     }
 }

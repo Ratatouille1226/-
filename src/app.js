@@ -7,4 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     contextMenu.open();
 
     contextMenu.close();
+
+    contextMenu.add();
 });
