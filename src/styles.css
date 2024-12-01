@@ -109,7 +109,7 @@ body {
 }
 
 .button:hover {
-    box-shadow: 0 4px 4px rgba(39, 39, 39, 0.3), /* Жёлтый цвет */ 0 6px 10px rgba(4, 252, 28, 0.1); /* Зелёный цвет */ 
+    box-shadow: 0 4px 4px rgba(39, 39, 39, 0.3), 0 6px 10px rgba(4, 252, 28, 0.1); 
 
 }
 
