@@ -5,6 +5,7 @@ import { ShapeModule } from './modules/shape.module';
 import { BitcoinModule } from './modules/bitcoin.module';
 import { ClickCounter } from './modules/clickCounter.module';
 import { JingleBells } from './modules/jingleBells.module';
+import { TimerModule } from './modules/timer.module';
 
 export class ContextMenu extends Menu {
     constructor(selector) {
@@ -17,6 +18,7 @@ export class ContextMenu extends Menu {
             { type: 4, class: ShapeModule, label: 'Форма' },
             { type: 5, class: BitcoinModule, label: 'Биткоин'},
             { type: 6, class: ClickCounter, label: 'Счётчик кликов'},
+            { type: 7, class: TimerModule, label: 'Таймер'},
         ];
 
         this.handleContextMenu = this.handleContextMenu.bind(this);
